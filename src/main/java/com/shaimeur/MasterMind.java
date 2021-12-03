@@ -4,66 +4,61 @@ import java.util.*;
 
 public class MasterMind {
 
-    private static final char OK = '#';
-    private static final char FAUX = 'O';
+    static ArrayList<Integer>  masterCode  = new ArrayList<Integer>();
+    static ArrayList<Integer>  breakerCode  = new ArrayList<Integer>();
+    static int sizze = 4 ;
+    static int m = 6 ;
+    static final int round = 10 ;
+    static  int count = 0;
 
     public static void main(String[] args) {
 
-        Scanner  scanner = new Scanner(System.in);
+        System.out.println("IAM THINKING ABOUT A CODE TRY TO GUESS IT !! ");
 
-        int taille = 4;
-        int max = 6;
-        int maxRound = 10 ;
-        int[] solution = new int[taille];
-        
-        Random random = new Random();
+        botGuess();
 
-        for (int i = 0; i <taille ; i++) {
-            solution[i] = random.nextInt(max+1);
-        }
 
-        int count = 0 ;
-
-        System.out.println("Le codeBraker doit trouver la combinaison" + taille + "  chiffres entre 1 et " + max + '.');
-        System.out.println(OK + "signifie que c'est le bon chiffre à la bonne place et " + FAUX + " signifie que cest le mauvais chiffre " );
-        System.out.println("Attention vous avez droit a " + maxRound + " essais");
-        System.out.println("------------------------------------------------------------------------------------------------------------");
-
-        int[] chiffres = new int[taille];
-        boolean victory = false;
-
-        do {
-            System.out.println("\nEssai n°" + (count + 1) + "/" + maxRound + " :"  );
-            int nombreSaisi = scanner.nextInt();
-                // scan guesses
-            for (int i = 0; i < taille; i++) {
-                chiffres[i] = (int) (nombreSaisi / (Math.pow(10,taille -1))) % 10;
+        while (count < round){
+            userInput();
+            boolean boolval = breakerCode.equals(masterCode);
+            if (boolval == true){
+                System.out.println("#,#,#,#");
+                System.out.println("YOU WINN!!");
+                break;
             }
-            //player guess
-            for (int i = 0; i <taille ; i++) {
-                System.out.println( chiffres[i]+ " ");
-                System.out.println(); // retour à la ligne
-            }
-
-            victory = true ;
-            for (int i = 0; i <taille ; i++) {
-                boolean jackpot = chiffres[i] == solution[i];
-                System.out.println((jackpot ? OK : FAUX) + " ");
-                victory = victory && jackpot;
-            }
-            System.out.println();
             count++;
-            if (count == maxRound){
-                System.out.println("vous avez épuiser vos " + maxRound + " essai ,vous avez perdu !! :(");
+            for (int i = 0; i < count; i++) {
+
             }
-
-
-
-        }while (!victory && count < maxRound);{
-            System.out.println("En seulement " + count + " coups");
-            scanner.close();
         }
 
+
+
+
+
+        }
+
+         static void userInput(){
+                breakerCode.clear();
+                 System.out.println("Enter your guess : ");
+                 Scanner scanner = new Scanner(System.in);
+
+             for (int j = 0; j <sizze ; j++) {
+                    int input = scanner.nextInt();
+                         breakerCode.add(input);
+                 }
+             System.out.println("Your  guess is :  " + breakerCode);
+         }
+
+
+            static void botGuess() {
+                 Random rand = new Random() ;
+                     for (int i = 0; i < sizze; i++) {
+                             masterCode.add(rand.nextInt(m) + 1);
+                          }
+                     System.out.println("the Guess is : " + masterCode) ;
+
+                }
     }
 
-}
+
