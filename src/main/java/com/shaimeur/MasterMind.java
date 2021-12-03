@@ -25,11 +25,23 @@ public class MasterMind {
                 System.out.println("#,#,#,#");
                 System.out.println("YOU WINN!!");
                 break;
+            } for (int z = 0;z<sizze;z++ ){
+                if (masterCode.get(z) == breakerCode.get(z)){
+                    breakerCode.set(0,z);
+                    System.out.println("# ");
+                }
+                for (int t : masterCode){
+                    if (breakerCode.get(z) == t){
+                        System.out.println("O");
+                    }
+                }
+                breakerCode.clear();
             }
-            count++;
-            for (int i = 0; i < count; i++) {
 
-            }
+
+
+           // count++;
+
         }
 
 
