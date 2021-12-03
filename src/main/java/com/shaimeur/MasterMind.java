@@ -10,6 +10,7 @@ public class MasterMind {
     static int m = 6 ;
     static final int round = 10 ;
     static  int count = 0;
+    static ArrayList<String > solution = new ArrayList<String >();
 
     public static void main(String[] args) {
 
@@ -25,22 +26,34 @@ public class MasterMind {
                 System.out.println("#,#,#,#");
                 System.out.println("YOU WINN!!");
                 break;
-            } for (int z = 0;z<sizze;z++ ){
+                // find the numbers with order "#"
+            }
+            for (int z = 0;z<sizze;z++ ){
                 if (masterCode.get(z) == breakerCode.get(z)){
                     breakerCode.set(0,z);
                     System.out.println("# ");
-                }
-                for (int t : masterCode){
-                    if (breakerCode.get(z) == t){
-                        System.out.println("O");
+                } // find the numbers with no order "O"
+
+                    /*for (int t = 0; t <sizze ; t++) {
+                    if (masterCode.contains(breakerCode.get(t)) && breakerCode.get(t) != masterCode.get(t) ){
+                        solution.add("O ");
+                    }
+                }*/
+
+                for(int n : masterCode) {
+                    if(breakerCode.get(z) == n ) {
+                        System.out.print("O ");
                     }
                 }
-                breakerCode.clear();
+
+                //System.out.println(solution);
+
+               // solution.clear();
+
+                 breakerCode.clear();
             }
 
-
-
-           // count++;
+            count++;
 
         }
 
