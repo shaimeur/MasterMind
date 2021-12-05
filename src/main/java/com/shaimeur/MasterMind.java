@@ -10,7 +10,7 @@ public class MasterMind {
     static int m = 6 ;
     static final int round = 10 ;
     static  int count = 0;
-    static ArrayList<String > solution = new ArrayList<String >();
+    //static ArrayList<String > solution = new ArrayList<String >();
 
     public static void main(String[] args) {
 
@@ -18,31 +18,23 @@ public class MasterMind {
 
         botGuess();
 
-
         while (count < round){
             userInput();
-            boolean boolval = breakerCode.equals(masterCode);
-            if (boolval == true){
+            if (breakerCode.equals(masterCode) == true){
                 System.out.println("#,#,#,#");
                 System.out.println("YOU WINN!!");
                 break;
                 // find the numbers with order "#"
             }
-            for (int z = 0;z<sizze;z++ ){
-                if (masterCode.get(z) == breakerCode.get(z)){
-                    breakerCode.set(0,z);
+            for (int z = 0; z < sizze ; z++ ){
+                if (masterCode.get(z) == breakerCode.get(z)) {
+                    breakerCode.set(z, 0);
                     System.out.println("# ");
-                } // find the numbers with no order "O"
-
-                    /*for (int t = 0; t <sizze ; t++) {
-                    if (masterCode.contains(breakerCode.get(t)) && breakerCode.get(t) != masterCode.get(t) ){
-                        solution.add("O ");
-                    }
-                }*/
+                }
 
                 for(int n : masterCode) {
                     if(breakerCode.get(z) == n ) {
-                        System.out.print("O ");
+                        System.out.println("O ");
                     }
                 }
 
@@ -50,28 +42,25 @@ public class MasterMind {
 
                // solution.clear();
 
-                 breakerCode.clear();
+
             }
+            breakerCode.clear();
 
             count++;
 
-        }
-
-
-
-
+                            }
 
         }
 
          static void userInput(){
-                breakerCode.clear();
-                 System.out.println("Enter your guess : ");
-                 Scanner scanner = new Scanner(System.in);
+            breakerCode.clear();
+            System.out.println("Enter your guess : ");
+            Scanner scanner = new Scanner(System.in);
 
              for (int j = 0; j <sizze ; j++) {
                     int input = scanner.nextInt();
-                         breakerCode.add(input);
-                 }
+                    breakerCode.add(input);
+             }
              System.out.println("Your  guess is :  " + breakerCode);
          }
 
